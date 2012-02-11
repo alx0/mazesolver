@@ -13,6 +13,25 @@
 
 #include <stdio.h>
 
+#define ROWS 7
+#define COL 5
+
+void print ( char m[ROWS][COL] ) {
+
+   for ( int i = 0 ; i < ROWS ; i++ ) {
+
+      for ( int j = 0 ; j < COL ; j++ ) {
+
+	 printf("%c ",m[i][j]) ;
+
+      }
+
+      puts("");
+
+   }
+
+}
+
 typedef struct {
 
    char destra ;
@@ -27,7 +46,7 @@ int main ( ) {
    intorno l ;
    char a , start ;
    int x  , y ;
-   char lab[7][5] = { { 'P' , 'P' , 'P' , 'P' , 'P'} ,
+   char maze[ROWS][COL] = { { 'P' , 'P' , 'P' , 'P' , 'P'} ,
       		     { 'E' , ' ' , ' ' , ' ' , 'P' },
 		     { 'P' , 'P' , ' ' , ' ' , 'P' },
 		     { 'P' , ' ' , 'P' , ' ' , 'P' },
@@ -40,41 +59,46 @@ int main ( ) {
    
    while ( a != 'E' ) {
 
-      l.destra = lab[x][y+1] ;
-      l.sinistra = lab[x][y-1] ;
-      l.sopra = lab[x-1][y] ;
-      l.sotto = lab[x+1][y] ;
+      l.destra = maze[x][y+1] ;
+      l.sinistra = maze[x][y-1] ;
+      l.sopra = maze[x-1][y] ;
+      l.sotto = maze[x+1][y] ;
 
       if ( l.sopra == 'E' || l.destra == 'E' || l.sinistra == 'E' || l.sotto == 'E' ) {
 
+	 maze[x][y] = '^' ;
 	 a = 'E' ;
 	 puts("THANK GOD! THE OUTPUT! :3");
 	 break ;
       }
 
       else if ( l.destra == ' ' ) {
+	 maze[x][y] = '^' ;
 	 y++ ;
 	 a = ' ' ;
       }
 	 
       else if ( l.sopra == ' ' ) {
+	 maze[x][y] = '^' ;
 	 x-- ;
 	 a = ' ' ;
       }
 
       else if ( l.sinistra == ' ' ) {
+	 maze[x][y] = '^' ;
 	 y-- ;
 	 a = ' ' ;
       }
 
       else if ( l.sotto == ' ' ) {
+	 maze[x][y] = '^' ;
 	 x++ ;
 	 a = ' ' ;
       }
 
        if ( l.destra == 'P' && l.sopra == 'P'  ) {
 
-	  lab[x][y] = 'P' ;
+	  maze[x][y] = '^' ;
 	  y-- ;
 	  a = ' ' ;
 
@@ -82,6 +106,8 @@ int main ( ) {
 
 
      }
+
+   print( maze ) ;
 
 
    return 0 ;
