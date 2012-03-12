@@ -2,7 +2,7 @@
    * ========================================
    * Filename : maze.c
    * 
-   * Description : An application solving a maze
+   * Description : An application solves a maze
    *
    * Compiler : gcc
    *
