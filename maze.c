@@ -6,7 +6,7 @@
    *
    * Compiler : gcc
    *
-   * Author : alx <phoenix0@autistici.org>
+   * Author : alx <alx0@autistici.org>
    * 
    * ========================================
 */
